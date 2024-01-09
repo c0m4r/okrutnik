@@ -24,7 +24,7 @@ Just put it where your project is and install required modules.
 ./okrutnik.sh TARGET
 ```
 
-Notice: it will reformat your code with [black](https://github.com/psf/black), make a backup or use --no-black
+Notice: it will reformat your code by default, make a backup or comment out black
 
 ## Screenshot
 
