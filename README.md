@@ -40,3 +40,7 @@ It will reformat your code by default, make a backup or comment out black
 ![image](https://github.com/c0m4r/okrutnik/assets/6292788/667464d6-bbf2-4011-bddb-e3234b66b758)
 
 </div>
+
+## Funding
+
+If you found this script helpful, please consider [making donation](https://en.wosp.org.pl/fundacja/jak-wspierac-wosp/wesprzyj-online) to a charity on my behalf. Thank you.
