@@ -12,7 +12,7 @@ So like... enjoy.
 
 ## Installation
 
-Just put it where your project is and install required modules.
+Just put it where your project is and install required modules:
 
 ```
 ./okrutnik.sh --install
@@ -24,7 +24,7 @@ Just put it where your project is and install required modules.
 ./okrutnik.sh TARGET
 ```
 
-Notice: it will reformat your code by default, make a backup or comment out black
+It will reformat your code by default, make a backup or comment out black
 
 ## Screenshot
 
