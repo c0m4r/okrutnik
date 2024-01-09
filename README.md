@@ -6,6 +6,10 @@ It can also ruin your day by letting you know how much your code sucks.
 
 So like... enjoy.
 
+## Deps
+
+[bandit](https://bandit.readthedocs.io/) | [black](https://github.com/psf/black) | [codespell](https://github.com/codespell-project/codespell) | [mypy](https://mypy.readthedocs.io/) | [pylama](https://github.com/klen/pylama) | [pylint](https://github.com/pylint-dev/pylint) | [pyright](https://github.com/microsoft/pyright) | [ruff](https://github.com/astral-sh/ruff)
+
 ## Installation
 
 Just put it where your project is and install required modules.
@@ -19,6 +23,8 @@ Just put it where your project is and install required modules.
 ```
 ./okrutnik.sh TARGET
 ```
+
+Notice: it will reformat your code with [black](https://github.com/psf/black), make a backup or use --no-black
 
 ## Screenshot
 
