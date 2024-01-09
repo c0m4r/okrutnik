@@ -2,7 +2,6 @@
 
 ![linux](https://img.shields.io/badge/Linux-bash-%23777BB4?logo=linux&logoColor=ffffff)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Test](https://github.com/c0m4r/up/workflows/PHPMD/badge.svg)](https://github.com/c0m4r/up/actions)
 [![CodeFactor](https://www.codefactor.io/repository/github/c0m4r/okrutnik/badge)](https://www.codefactor.io/repository/github/c0m4r/okrutnik)
 
 Okrutnik ([/ɔkrutɲik/](https://www.youtube.com/watch?v=JaEWtfozcSk)) - a bash script that helps you write correct Python code.
