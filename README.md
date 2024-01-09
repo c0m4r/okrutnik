@@ -1,6 +1,7 @@
 # Okrutnik
 
 ![linux](https://img.shields.io/badge/Linux-bash-%23777BB4?logo=linux&logoColor=ffffff)
+![Python](https://img.shields.io/badge/Python-linter-blue?logo=python&logoColor=ffffff)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CodeFactor](https://www.codefactor.io/repository/github/c0m4r/okrutnik/badge)](https://www.codefactor.io/repository/github/c0m4r/okrutnik)
 
