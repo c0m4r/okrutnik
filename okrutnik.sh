@@ -35,16 +35,16 @@ ENDCOLOR="\e[0m"
 # Functions
 # --------------------------------------------
 
-function init() {
+init() {
     echo -e "${ORANGE}${1}${ENDCOLOR}"
 }
 
-function pass() {
+pass() {
     echo -e "-> ${GREEN}pass${ENDCOLOR}"
     ITERATION=$(( $ITERATION + 1 ))
 }
 
-function install() {
+install() {
     # Check venv
     if [ -e pyvenv.cfg ]; then
         PIP="bin/pip"
