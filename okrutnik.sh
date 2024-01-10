@@ -22,7 +22,7 @@ set -e
 # --------------------------------------------
 
 PATH=$PATH:bin
-VERSION=1.0.1
+VERSION=1.0.2
 
 ARG=$1
 PYENV=false
