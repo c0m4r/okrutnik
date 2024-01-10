@@ -119,6 +119,6 @@ bandit --quiet $TARGET ; pass
 # --------------------------------------------
 
 # black
-init "black  (${ITERATION}/${TOOLS_NUM})"
+init "black (${ITERATION}/${TOOLS_NUM})"
 bin/black --diff --color $TARGET
 black -q $TARGET ; pass
