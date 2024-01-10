@@ -22,7 +22,7 @@ set -e
 # --------------------------------------------
 
 PATH=$PATH:bin
-VERSION=1.0.0
+VERSION=1.0.1
 
 ARG=$1
 PYENV=false
@@ -120,5 +120,5 @@ bandit --quiet $TARGET ; pass
 
 # black
 init "black (${ITERATION}/${TOOLS_NUM})"
-bin/black --diff --color $TARGET
+black --diff --color $TARGET
 black -q $TARGET ; pass
