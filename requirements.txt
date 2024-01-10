@@ -1,0 +1,8 @@
+bandit
+black
+codespell
+mypy
+pylama
+pylint
+pyright
+ruff
