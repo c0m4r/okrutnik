@@ -22,7 +22,7 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.6
+VERSION=1.0.7
 
 ARG=$1
 ARG2=$2
@@ -68,23 +68,30 @@ install() {
 # Validation / args handling
 # --------------------------------------------
 
+set +e
+
 # Check args
-if [ "$ARG" == "--help" ]; then
+if [[ "$ARG" == "--help" ]]; then
     init "Okrutnik v${VERSION}"
-    echo "Usage: ./okrutnik.sh TARGET"
+    echo "Usage: ./okrutnik.sh TARGET [--ignore]"
     exit 0
-elif [ "$ARG" == "--version" ]; then
+elif [[ "$ARG" == "--version" ]]; then
     init "Okrutnik v${VERSION}"
     exit 0
-elif [ "$ARG" == "--install" ]; then
+elif [[ "$ARG" == "--install" ]]; then
     install
     exit 0
-elif [ ! -e "$ARG" ]; then
+elif [[ ! "$ARG" ]]; then
     echo "Missing TARGET"
+    exit 1
+elif [[ ! -e $ARG ]]; then
+    echo "TARGET $ARG not found"
     exit 1
 else
     TARGET=$1
 fi
+
+set -e
 
 TOOLS_NUM=8
 ITERATION=1
