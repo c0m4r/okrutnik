@@ -21,8 +21,8 @@ set -e
 # Vars
 # --------------------------------------------
 
-PATH=$PATH:bin
-VERSION=1.0.2
+BASEDIR=$(dirname "$0")
+VERSION=1.0.3
 
 ARG=$1
 PYENV=false
@@ -30,6 +30,20 @@ PYENV=false
 ORANGE='\e[1;33m'
 GREEN='\e[1;32m'
 ENDCOLOR="\e[0m"
+
+# Check venv
+if [ -e ${BASEDIR}/pyvenv.cfg ]; then
+    PIP="${BASEDIR}/bin/pip"
+    PATH="${BASEDIR}/bin:${PATH}"
+elif [ -e ${BASEDIR}/venv/pyvenv.cfg ]; then
+    PIP="${BASEDIR}/venv/bin/pip"
+    PATH="${BASEDIR}/venv/bin:${PATH}"
+elif [ -e ${BASEDIR}/.venv/pyvenv.cfg ]; then
+    PIP="${BASEDIR}/.venv/bin/pip"
+    PATH="${BASEDIR}/.venv/bin:${PATH}"
+else
+    PIP="pip"
+fi
 
 # --------------------------------------------
 # Functions
@@ -45,12 +59,7 @@ pass() {
 }
 
 install() {
-    # Check venv
-    if [ -e pyvenv.cfg ]; then
-        PIP="bin/pip"
-    else
-        PIP="pip"
-    fi
+    echo ${PIP}
     ${PIP} install bandit black codespell mypy pylint pyright pylama ruff
 }
 
@@ -84,6 +93,8 @@ init "Okrutnik v${VERSION} by c0m4r"
 # --------------------------------------------
 # Linters
 # --------------------------------------------
+
+echo $PATH
 
 # Ruff
 init "ruff (${ITERATION}/${TOOLS_NUM})"
