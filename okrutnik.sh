@@ -22,7 +22,7 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.4
+VERSION=1.0.5
 
 ARG=$1
 PYENV=false
@@ -93,8 +93,6 @@ init "Okrutnik v${VERSION} by c0m4r"
 # --------------------------------------------
 # Linters
 # --------------------------------------------
-
-echo $PATH
 
 # Ruff
 init "ruff (${ITERATION}/${TOOLS_NUM})"
