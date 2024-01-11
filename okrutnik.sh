@@ -22,9 +22,10 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.5
+VERSION=1.0.6
 
 ARG=$1
+ARG2=$2
 PYENV=false
 
 ORANGE='\e[1;33m'
@@ -93,6 +94,10 @@ init "Okrutnik v${VERSION} by c0m4r"
 # --------------------------------------------
 # Linters
 # --------------------------------------------
+
+if [[ "$ARG2" == "--ignore" ]]; then
+    set +e
+fi
 
 # Ruff
 init "ruff (${ITERATION}/${TOOLS_NUM})"
