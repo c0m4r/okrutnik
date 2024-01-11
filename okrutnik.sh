@@ -22,7 +22,7 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.3
+VERSION=1.0.4
 
 ARG=$1
 PYENV=false
@@ -111,7 +111,7 @@ pylama --ignore C901 $TARGET ; pass
 
 # mypy
 init "mypy (${ITERATION}/${TOOLS_NUM})"
-mypy --install-types --strict $TARGET ; pass
+mypy --install-types --non-interactive --strict $TARGET ; pass
 
 # pylint
 init "pylint (${ITERATION}/${TOOLS_NUM})"
