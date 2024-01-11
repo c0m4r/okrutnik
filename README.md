@@ -27,8 +27,16 @@ Just put it where your project is and install required modules:
 
 ## Usage
 
+Exit on errors:
+
 ```
 ./okrutnik.sh TARGET
+```
+
+Ignore errors:
+
+```
+./okrutnik.sh TARGET --ignore
 ```
 
 It will reformat your code by default, make a backup or comment out black
