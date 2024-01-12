@@ -22,7 +22,7 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.12
+VERSION=1.0.13
 
 ARG1=$1
 ARG2=$2
@@ -48,9 +48,10 @@ pass() {
     if [[ $? -eq 0 ]]; then
         echo -e "-> ${GREEN}pass${ENDCOLOR}"
     else
-        echo -e "-> ${RED}your code sucks!${ENDCOLOR} "
+        echo -e "-> ${RED}your code sucks${ENDCOLOR}"
     fi
-        ITERATION=$(( $ITERATION + 1 ))
+
+    ITERATION=$(( $ITERATION + 1 ))
 }
 
 install() {
@@ -114,6 +115,8 @@ if [[ "$ARG1" == "--ignore" ]]; then
     TARGET=$(echo $@ | sed 's/\-\-ignore\ //g;')
     set +e
 fi
+
+echo $TARGET
 
 # ruff 0.1.12 bug workaround
 # https://github.com/astral-sh/ruff/issues/9478
