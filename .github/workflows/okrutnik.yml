@@ -24,7 +24,11 @@ jobs:
         run: ./okrutnik.sh --help
       - name: Deploy
         run: ./okrutnik.sh --install
-      - name: Test
+      - name: Test correct code
+        run: |
+          wget https://pastebin.com/raw/MEyLEDYS -O test.py
+          ./okrutnik.sh test.py
+      - name: Test pip
         run: ./okrutnik.sh pip-23.3.2/setup.py || true
-      - name: Test with stop
+      - name: Test pip with stop
         run: ./okrutnik.sh --stop pip-23.3.2/setup.py || true
