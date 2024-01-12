@@ -22,9 +22,10 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.8
+VERSION=1.0.9
 
-ARG=$1
+ARGS=$@
+ARG1=$1
 ARG2=$2
 PYENV=false
 
@@ -71,24 +72,21 @@ install() {
 set +e
 
 # Check args
-if [[ "$ARG" == "--help" ]]; then
+if [[ "$ARG1" == "--help" ]]; then
     init "Okrutnik v${VERSION}"
-    echo "Usage: ./okrutnik.sh TARGET [--ignore]"
+    echo "Usage: ./okrutnik.sh [--ignore] TARGET"
     exit 0
-elif [[ "$ARG" == "--version" ]]; then
+elif [[ "$ARG1" == "--version" ]]; then
     init "Okrutnik v${VERSION}"
     exit 0
-elif [[ "$ARG" == "--install" ]]; then
+elif [[ "$ARG1" == "--install" ]]; then
     install
     exit 0
-elif [[ ! "$ARG" ]]; then
+elif [[ ! "$ARG1" ]]; then
     echo "Missing TARGET"
     exit 1
-elif [[ ! -e $ARG ]]; then
-    echo "TARGET $ARG not found"
-    exit 1
 else
-    TARGET=$1
+    TARGET=$@
 fi
 
 set -e
@@ -102,7 +100,8 @@ init "Okrutnik v${VERSION} by c0m4r"
 # Linters
 # --------------------------------------------
 
-if [[ "$ARG2" == "--ignore" ]]; then
+if [[ "$ARG1" == "--ignore" ]]; then
+    TARGET=$(echo $TARGET | sed 's/\-\-ignore\ //g;')
     set +e
 fi
 
@@ -112,16 +111,15 @@ mkdir -p .ruff_cache/0.1.12
 
 # Ruff
 init "ruff (${ITERATION}/${TOOLS_NUM})"
-ruff $TARGET ; pass
+ruff -v $TARGET ; pass
 
 # codespell
 init "codespell (${ITERATION}/${TOOLS_NUM})"
-codespell --skip "./lib/python*" $TARGET ; pass
+codespell --skip "./*venv*" --skip "./lib/python*" $TARGET ; pass
 
 # pylama
-init "pylama  (${ITERATION}/${TOOLS_NUM})"
-pylama $TARGET
-pylama --ignore C901 $TARGET ; pass
+init "pylama (${ITERATION}/${TOOLS_NUM})"
+pylama -v $TARGET ; pass
 
 # mypy
 init "mypy (${ITERATION}/${TOOLS_NUM})"
@@ -129,7 +127,7 @@ mypy --install-types --non-interactive --strict $TARGET ; pass
 
 # pylint
 init "pylint (${ITERATION}/${TOOLS_NUM})"
-pylint --disable W0718 $TARGET ; pass
+pylint $TARGET ; pass
 
 # pyright
 init "pyright (${ITERATION}/${TOOLS_NUM})"
