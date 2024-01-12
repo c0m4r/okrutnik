@@ -27,7 +27,7 @@ jobs:
       - name: Test correct code
         run: |
           wget https://pastebin.com/raw/VkNgE6dP -O test.py
-          ./okrutnik.sh test.py
+          ./okrutnik.sh --stop test.py
       - name: Test pip
         run: ./okrutnik.sh pip-23.3.2/setup.py || true
       - name: Test pip with stop
