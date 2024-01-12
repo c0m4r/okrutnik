@@ -30,13 +30,13 @@ Just put it where your project is and install required modules:
 Exit on errors:
 
 ```
-./okrutnik.sh TARGET
+./okrutnik.sh target.py
 ```
 
 Ignore errors:
 
 ```
-./okrutnik.sh TARGET --ignore
+./okrutnik.sh --ignore target.py
 ```
 
 It will reformat your code by default, make a backup or comment out black
