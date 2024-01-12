@@ -27,19 +27,29 @@ Just put it where your project is and install required modules:
 
 ## Usage
 
-Exit on errors:
-
 ```
 ./okrutnik.sh target.py
 ```
 
-Ignore errors:
+To stop on failed linters or errors:
 
 ```
-./okrutnik.sh --ignore target.py
+./okrutnik.sh --stop target.py
 ```
 
 It will reformat your code by default, make a backup or comment out black
+
+```
+Usage: ./okrutnik.sh [options] <target>
+
+Before <target>:
+ -s, --stop       Exit on failed linters or errors
+
+Standalone:
+ -h, --help       Print this help message
+ --update         Update installed tools
+ --uninstall      Remove installed tools
+```
 
 ## Screenshot
 
