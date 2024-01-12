@@ -22,7 +22,7 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.10
+VERSION=1.0.11
 
 ARGS=$@
 ARG1=$1
@@ -31,7 +31,39 @@ PYENV=false
 
 ORANGE='\e[1;33m'
 GREEN='\e[1;32m'
+CYAN='\e[1;36m'
+RED='\e[1;31m'
 ENDCOLOR="\e[0m"
+
+echo -e "${ORANGE}Okrutnik v${VERSION} by c0m4r${ENDCOLOR}"
+
+# --------------------------------------------
+# Functions
+# --------------------------------------------
+
+print() {
+    echo -e "${ORANGE}${1}${ENDCOLOR}"
+}
+
+pass() {
+    if [[ $? -eq 0 ]]; then
+        echo -e "-> ${GREEN}pass${ENDCOLOR}"
+    else
+        echo -e "-> ${RED}your code sucks!${ENDCOLOR} "
+    fi
+        ITERATION=$(( $ITERATION + 1 ))
+}
+
+install() {
+    echo -e "${CYAN}Connecting to an intergalactic relay${ENDCOLOR} 📡"
+    ${PIP} install bandit black codespell mypy pylint pyright pylama ruff
+    echo -e "${CYAN}Receiving communication...${ENDCOLOR}"
+    echo -e "-> ${GREEN}All your base are belong to us${ENDCOLOR} 👽"
+}
+
+# --------------------------------------------
+# Validation / args handling
+# --------------------------------------------
 
 # Check venv
 if [ -e ${BASEDIR}/pyvenv.cfg ]; then
@@ -43,41 +75,22 @@ elif [ -e ${BASEDIR}/venv/pyvenv.cfg ]; then
 elif [ -e ${BASEDIR}/.venv/pyvenv.cfg ]; then
     PIP="${BASEDIR}/.venv/bin/pip"
     PATH="${BASEDIR}/.venv/bin:${PATH}"
+elif [ -e ${BASEDIR}/.okrutnik_venv/pyvenv.cfg ]; then
+    PIP="${BASEDIR}/.okrutnik_venv/bin/pip"
+    PATH="${BASEDIR}/.okrutnik_venv/bin:${PATH}"
 else
-    PIP="pip"
+    echo "Creating venv..."
+    python -m venv .okrutnik_venv
+    PIP="${BASEDIR}/.okrutnik_venv/bin/pip"
+    PATH="${BASEDIR}/.okrutnik_venv/bin:${PATH}"
+    install
 fi
-
-# --------------------------------------------
-# Functions
-# --------------------------------------------
-
-init() {
-    echo -e "${ORANGE}${1}${ENDCOLOR}"
-}
-
-pass() {
-    echo -e "-> ${GREEN}pass${ENDCOLOR}"
-    ITERATION=$(( $ITERATION + 1 ))
-}
-
-install() {
-    echo ${PIP}
-    ${PIP} install bandit black codespell mypy pylint pyright pylama ruff
-}
-
-# --------------------------------------------
-# Validation / args handling
-# --------------------------------------------
 
 set +e
 
 # Check args
 if [[ "$ARG1" == "--help" ]]; then
-    init "Okrutnik v${VERSION}"
     echo "Usage: ./okrutnik.sh [--ignore] TARGET"
-    exit 0
-elif [[ "$ARG1" == "--version" ]]; then
-    init "Okrutnik v${VERSION}"
     exit 0
 elif [[ "$ARG1" == "--install" ]]; then
     install
@@ -94,8 +107,6 @@ set -e
 TOOLS_NUM=8
 ITERATION=1
 
-init "Okrutnik v${VERSION} by c0m4r"
-
 # --------------------------------------------
 # Linters
 # --------------------------------------------
@@ -110,32 +121,32 @@ fi
 mkdir -p .ruff_cache/0.1.12
 
 # Ruff
-init "ruff (${ITERATION}/${TOOLS_NUM})"
+print "ruff (${ITERATION}/${TOOLS_NUM})"
 ruff -v $TARGET ; pass
 
 # codespell
-init "codespell (${ITERATION}/${TOOLS_NUM})"
+print "codespell (${ITERATION}/${TOOLS_NUM})"
 codespell --skip "./*venv*" --skip "./lib/python*" $TARGET ; pass
 
 # pylama
-init "pylama (${ITERATION}/${TOOLS_NUM})"
+print "pylama (${ITERATION}/${TOOLS_NUM})"
 pylama -v $TARGET ; pass
 
 # mypy
-init "mypy (${ITERATION}/${TOOLS_NUM})"
+print "mypy (${ITERATION}/${TOOLS_NUM})"
 mypy --install-types --non-interactive --strict $TARGET ; pass
 
 # pylint
-init "pylint (${ITERATION}/${TOOLS_NUM})"
+print "pylint (${ITERATION}/${TOOLS_NUM})"
 echo "W0718: (broad-exception-caught) is disabled"
 pylint --disable W0718 $TARGET ; pass
 
 # pyright
-init "pyright (${ITERATION}/${TOOLS_NUM})"
+print "pyright (${ITERATION}/${TOOLS_NUM})"
 pyright $TARGET ; pass
 
 # bandit
-init "bandit (${ITERATION}/${TOOLS_NUM})"
+print "bandit (${ITERATION}/${TOOLS_NUM})"
 bandit --quiet $TARGET ; pass
 
 # --------------------------------------------
@@ -143,6 +154,6 @@ bandit --quiet $TARGET ; pass
 # --------------------------------------------
 
 # black
-init "black (${ITERATION}/${TOOLS_NUM})"
+print "black (${ITERATION}/${TOOLS_NUM})"
 black --diff --color $TARGET
 black -q $TARGET ; pass
