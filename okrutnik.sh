@@ -22,9 +22,8 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.11
+VERSION=1.0.12
 
-ARGS=$@
 ARG1=$1
 ARG2=$2
 PYENV=false
@@ -99,7 +98,7 @@ elif [[ ! "$ARG1" ]]; then
     echo "Missing TARGET"
     exit 1
 else
-    TARGET=$@
+    TARGET=$*
 fi
 
 set -e
@@ -112,7 +111,7 @@ ITERATION=1
 # --------------------------------------------
 
 if [[ "$ARG1" == "--ignore" ]]; then
-    TARGET=$(echo $TARGET | sed 's/\-\-ignore\ //g;')
+    TARGET=$(echo $@ | sed 's/\-\-ignore\ //g;')
     set +e
 fi
 
