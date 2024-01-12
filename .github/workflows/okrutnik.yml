@@ -1,0 +1,30 @@
+name: okrutnik
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.1'
+      - name: Download Okrutnik
+        run: |
+          wget https://raw.githubusercontent.com/c0m4r/okrutnik/main/okrutnik.sh
+          chmod +x okrutnik.sh
+      - name: Download Target
+        run: |
+          wget https://files.pythonhosted.org/packages/b7/06/6b1ad0ae8f97d7a0d6f6ad640db10780578999e647a9593512ceb6f06469/pip-23.3.2.tar.gz
+          tar -xvf pip-23.3.2.tar.gz
+      - name: Print help
+        run: ./okrutnik.sh --help
+      - name: Deploy
+        run: ./okrutnik.sh --install
+      - name: Test
+        run: ./okrutnik.sh pip-23.3.2/setup.py || true
+      - name: Test with stop
+        run: ./okrutnik.sh --stop pip-23.3.2/setup.py || true
