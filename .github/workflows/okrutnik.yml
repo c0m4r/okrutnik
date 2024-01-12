@@ -28,7 +28,9 @@ jobs:
         run: |
           wget https://pastebin.com/raw/VkNgE6dP -O test.py
           ./okrutnik.sh --stop test.py
-      - name: Test pip
+      - name: Test code which sucks
         run: ./okrutnik.sh pip-23.3.2/setup.py || true
-      - name: Test pip with stop
+      - name: Test code which sucks and exit on first error
         run: ./okrutnik.sh --stop pip-23.3.2/setup.py || true
+      - name: Uninstall
+        run: ./okrutnik.sh --uninstall <<< "y"
