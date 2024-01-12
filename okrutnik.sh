@@ -21,7 +21,7 @@
 # --------------------------------------------
 
 # Version
-VERSION=2.0.0
+VERSION=2.0.1
 
 # Toolset
 TOOLSET="bandit black codespell mypy pylint pyright pylama ruff safety"
@@ -179,10 +179,6 @@ fi
 
 # Print targets
 echo "Target(s): ${TARGET}"
-
-# ruff 0.1.12 bug workaround
-# https://github.com/astral-sh/ruff/issues/9478
-mkdir -p .ruff_cache/0.1.12
 
 # Ruff
 print "ruff (${ITERATION}/${TOOLS_NUM})"
