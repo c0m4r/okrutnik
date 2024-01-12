@@ -22,7 +22,7 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.7
+VERSION=1.0.8
 
 ARG=$1
 ARG2=$2
@@ -105,6 +105,10 @@ init "Okrutnik v${VERSION} by c0m4r"
 if [[ "$ARG2" == "--ignore" ]]; then
     set +e
 fi
+
+# ruff 0.1.12 bug workaround
+# https://github.com/astral-sh/ruff/issues/9478
+mkdir -p .ruff_cache/0.1.12
 
 # Ruff
 init "ruff (${ITERATION}/${TOOLS_NUM})"
