@@ -127,7 +127,8 @@ mypy --install-types --non-interactive --strict $TARGET ; pass
 
 # pylint
 init "pylint (${ITERATION}/${TOOLS_NUM})"
-pylint $TARGET ; pass
+echo "W0718: (broad-exception-caught) is disabled"
+pylint --disable W0718 $TARGET ; pass
 
 # pyright
 init "pyright (${ITERATION}/${TOOLS_NUM})"
