@@ -22,7 +22,7 @@ set -e
 # --------------------------------------------
 
 BASEDIR=$(dirname "$0")
-VERSION=1.0.13
+VERSION=1.0.14
 
 ARG1=$1
 ARG2=$2
@@ -47,8 +47,10 @@ print() {
 pass() {
     if [[ $? -eq 0 ]]; then
         echo -e "-> ${GREEN}pass${ENDCOLOR}"
+        PASSED=$(( $PASSED + 1 ))
     else
         echo -e "-> ${RED}your code sucks${ENDCOLOR}"
+        FAILED=$(( $FAILED + 1))
     fi
 
     ITERATION=$(( $ITERATION + 1 ))
@@ -106,6 +108,8 @@ set -e
 
 TOOLS_NUM=8
 ITERATION=1
+PASSED=0
+FAILED=0
 
 # --------------------------------------------
 # Linters
@@ -159,3 +163,25 @@ bandit --quiet $TARGET ; pass
 print "black (${ITERATION}/${TOOLS_NUM})"
 black --diff --color $TARGET
 black -q $TARGET ; pass
+
+# --------------------------------------------
+# Summary
+# --------------------------------------------
+
+PERCENT=$(echo $PASSED $TOOLS_NUM \
+    | awk '{ quotient = $1 / $2 * 100 ; print int(quotient) }')
+
+print "summary"
+echo -e "-> ${PASSED}/${TOOLS_NUM} (${PERCENT}%)"
+
+if [[ $PERCENT -lt 30 ]]; then
+    echo -e "-> ${RED}do you even code?${ENDCOLOR} 😂"
+elif [[ $PERCENT -lt 50 ]]; then
+    echo -e "-> ${RED}damn, your code really sucks${ENDCOLOR} 🙄"
+elif [[ $PERCENT -lt 70 ]]; then
+    echo -e "-> ${RED}still sucks...${ENDCOLOR} 🙃"
+elif [[ $PERCENT -lt 100 ]]; then
+    echo -e "-> ${ORANGE}almost there${ENDCOLOR} 🤔"
+else
+    echo -e "-> ${GREEN}too easy${ENDCOLOR} 😎"
+fi
