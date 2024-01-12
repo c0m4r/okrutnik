@@ -88,7 +88,7 @@ okrutnik_install() {
 okrutnik_uninstall() {
     if [[ "${VENV}" ]] && [[ -d ${VENV} ]]; then
         echo -n "${VENV} will be removed, "
-        read -p "are you sure? (y/N): " response \
+        read -r -p "are you sure? (y/N): " response \
             && [[ $response == [yY] ]] \
             || exit 1
         rm -rv "${VENV}"
