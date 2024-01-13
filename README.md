@@ -23,7 +23,7 @@ It uses a bundle of different linters and a code formatter:
 Just put it where your project is and install required modules:
 
 ```
-./okrutnik.sh --install
+./okrutnik.sh --install -r requirements.txt
 ```
 
 Okrutnik will create venv in .okrutnik_venv for itself and store its tools in ordor to perform a scan.
