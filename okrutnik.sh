@@ -139,6 +139,7 @@ if [[ "$ARG1" == "-h" ]] || [[ "$ARG1" == "--help" ]]; then
     echo " -h, --help       Print this help message"
     echo " --update         Update installed tools"
     echo " --uninstall      Remove installed tools"
+    echo " --safety         Run safety check"
     exit 0
 elif [[ "$ARG1" == "--update" ]]; then
     okrutnik_install
