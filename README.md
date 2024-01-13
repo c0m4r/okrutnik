@@ -26,6 +26,10 @@ Just put it where your project is and install required modules:
 ./okrutnik.sh --install
 ```
 
+Okrutnik will create venv in .okrutnik_venv for itself and store its tools in ordor to perform a scan.
+
+You can --update or --uninstall them at any time.
+
 ## Usage
 
 ```
@@ -38,7 +42,7 @@ To stop on failed linters or errors:
 ./okrutnik.sh --stop target.py
 ```
 
-It will reformat your code by default, make a backup or comment out black
+Be advised: it will reformat your code by default, make a backup or comment out black.
 
 ```
 Usage: ./okrutnik.sh [options] <target>
@@ -50,6 +54,7 @@ Standalone:
  -h, --help       Print this help message
  --update         Update installed tools
  --uninstall      Remove installed tools
+ --safety         Run safety check
 ```
 
 ## Screenshot
