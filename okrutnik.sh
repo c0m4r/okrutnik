@@ -21,7 +21,7 @@
 # --------------------------------------------
 
 # Version
-VERSION=2.1.0
+VERSION=2.1.2
 
 # Toolset
 TOOLSET="bandit black codespell mypy pylint pyright pylama ruff safety"
@@ -35,6 +35,7 @@ VENV="${BASEDIR}/.okrutnik_venv"
 # Args
 ARG1=$1
 ARG2=$2
+ARG3=$3
 
 # Colors
 ORANGE='\e[1;33m'
@@ -81,6 +82,10 @@ okrutnik_install() {
     okrutnik_which_pip
     ${PIP} install --upgrade pip setuptools wheel
     ${PIP} install --upgrade ${TOOLSET}
+    if [[ "$ARG2" == "-r" ]] && [[ -e $ARG3 ]]; then
+        print "$ARG3"
+        ${PIP} install -r $ARG3
+    fi
     echo -e "${CYAN}Receiving communication...${ENDCOLOR}"
     echo -e "-> ${GREEN}All your base are belong to us${ENDCOLOR} 👽"
 }
@@ -133,13 +138,14 @@ if [[ "$ARG1" == "-h" ]] || [[ "$ARG1" == "--help" ]]; then
     echo "Usage: ./okrutnik.sh [options] <target>"
     echo ""
     echo "Before <target>:"
-    echo " -s, --stop       Exit on failed linters or errors"    
+    echo " -s, --stop                        Exit on failed linters or errors"    
     echo ""
     echo "Standalone:"
-    echo " -h, --help       Print this help message"
-    echo " --update         Update installed tools"
-    echo " --uninstall      Remove installed tools"
-    echo " --safety         Run safety check"
+    echo " -h, --help                        Print this help message"
+    echo " --update                          Update installed tools"
+    echo " --install [-r requirements.txt]   Install tools [and target requirements]"
+    echo " --uninstall                       Remove installed tools"
+    echo " --safety                          Run safety check"
     exit 0
 elif [[ "$ARG1" == "--update" ]]; then
     okrutnik_install
