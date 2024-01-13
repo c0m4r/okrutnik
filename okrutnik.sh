@@ -21,7 +21,7 @@
 # --------------------------------------------
 
 # Version
-VERSION=2.0.1
+VERSION=2.1.0
 
 # Toolset
 TOOLSET="bandit black codespell mypy pylint pyright pylama ruff safety"
@@ -161,6 +161,15 @@ if [[ -e ${VENV}/pyvenv.cfg ]]; then
     PATH="${VENV}/bin:${PATH}"
 else
     okrutnik_install
+fi
+
+# --------------------------------------------
+# Safety check
+# --------------------------------------------
+
+if [[ "$ARG1" == "--safety" ]]; then
+    safety check
+    exit $?
 fi
 
 # --------------------------------------------
