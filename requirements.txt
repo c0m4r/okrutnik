@@ -6,3 +6,4 @@ pylama
 pylint
 pyright
 ruff
+safety
