@@ -41,7 +41,7 @@ Include custom modules used in your project with `-r requirements.txt`:
 
 Okrutnik will create a virtual Python environment in .okrutnik_venv for itself and store its tools in order to perform a scan.
 
-You can --update or --uninstall them at any time.
+You can `--update` or `--uninstall` them at any time.
 
 ## Usage 🚀
 
@@ -55,7 +55,7 @@ To stop on failed linters or errors:
 ./okrutnik.sh --stop target.py
 ```
 
-Be advised: it will reformat your code by default, make a backup or comment out black.
+**Be advised**: it will reformat your code by default. Make a backup or comment out black before use.
 
 ```
 Usage: ./okrutnik.sh [options] <target>
