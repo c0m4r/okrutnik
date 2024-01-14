@@ -21,7 +21,7 @@
 # --------------------------------------------
 
 # Version
-VERSION=2.1.2
+VERSION=2.1.3
 
 # Toolset
 TOOLSET="bandit black codespell mypy pylint pyright pylama ruff safety"
@@ -198,7 +198,7 @@ echo "Target(s): ${TARGET}"
 
 # Ruff
 print "ruff (${ITERATION}/${TOOLS_NUM})"
-ruff -v $TARGET ; pass
+ruff $TARGET ; pass
 
 # codespell
 print "codespell (${ITERATION}/${TOOLS_NUM})"
@@ -206,7 +206,7 @@ codespell --skip "./*venv*" --skip "./lib/python*" $TARGET ; pass
 
 # pylama
 print "pylama (${ITERATION}/${TOOLS_NUM})"
-pylama -v $TARGET ; pass
+pylama $TARGET ; pass
 
 # mypy
 print "mypy (${ITERATION}/${TOOLS_NUM})"
