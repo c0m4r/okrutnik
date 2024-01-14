@@ -12,25 +12,38 @@ It can also ruin your day by letting you know how much your code sucks.
 
 So like... enjoy.
 
-## Deps
+## Deps 📦
 
 It uses a bundle of different linters and a code formatter:
 
-[bandit](https://bandit.readthedocs.io/) | [black](https://github.com/psf/black) | [codespell](https://github.com/codespell-project/codespell) | [mypy](https://mypy.readthedocs.io/) | [pylama](https://github.com/klen/pylama) | [pylint](https://github.com/pylint-dev/pylint) | [pyright](https://github.com/microsoft/pyright) | [ruff](https://github.com/astral-sh/ruff)
+[bandit](https://bandit.readthedocs.io/) 
+| [black](https://github.com/psf/black) 
+| [codespell](https://github.com/codespell-project/codespell) 
+| [mypy](https://mypy.readthedocs.io/) 
+| [pylama](https://github.com/klen/pylama) 
+| [pylint](https://github.com/pylint-dev/pylint) 
+| [pyright](https://github.com/microsoft/pyright) 
+| [ruff](https://github.com/astral-sh/ruff)
 
-## Installation
+## Installation 💾
 
-Just put it where your project is and install required modules:
+Just put it where your project is and install the required modules:
+
+```
+./okrutnik.sh --install
+```
+
+Include custom modules used in your project with `-r requirements.txt`:
 
 ```
 ./okrutnik.sh --install -r requirements.txt
 ```
 
-Okrutnik will create venv in .okrutnik_venv for itself and store its tools in ordor to perform a scan.
+Okrutnik will create a virtual Python environment in .okrutnik_venv for itself and store its tools in order to perform a scan.
 
 You can --update or --uninstall them at any time.
 
-## Usage
+## Usage 🚀
 
 ```
 ./okrutnik.sh target.py
@@ -57,7 +70,7 @@ Standalone:
  --safety         Run safety check
 ```
 
-## Screenshot
+## Screenshot 📸
 
 <div align="center">
 
@@ -65,6 +78,6 @@ Standalone:
 
 </div>
 
-## Funding
+## Funding 💌
 
 If you found this script helpful, please consider [making donation](https://en.wosp.org.pl/fundacja/jak-wspierac-wosp/wesprzyj-online) to a charity on my behalf. Thank you.
