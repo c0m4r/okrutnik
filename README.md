@@ -27,6 +27,13 @@ It uses a bundle of different linters and a code formatter:
 
 ## Installation 💾
 
+Download
+
+```
+wget https://raw.githubusercontent.com/c0m4r/okrutnik/main/okrutnik.sh
+chmod +x okrutnik.sh
+```
+
 Just put it where your project is and install the required modules:
 
 ```
