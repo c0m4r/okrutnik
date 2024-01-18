@@ -12,6 +12,12 @@ It can also ruin your day by letting you know how much your code sucks.
 
 So like... enjoy.
 
+<div align="center">
+
+![o2](https://github.com/c0m4r/okrutnik/assets/6292788/11ef392b-1be8-4ff6-b6c9-2ab6603e7cc4)
+
+</div>
+
 ## 📦 Deps
 
 It uses a bundle of different linters and a code formatter:
@@ -76,14 +82,6 @@ Standalone:
  --uninstall      Remove installed tools
  --safety         Run safety check
 ```
-
-## 📸 Screenshot
-
-<div align="center">
-
-![image](https://github.com/c0m4r/okrutnik/assets/6292788/667464d6-bbf2-4011-bddb-e3234b66b758)
-
-</div>
 
 ## 💸 Funding
 
