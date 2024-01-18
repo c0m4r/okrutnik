@@ -12,7 +12,7 @@ It can also ruin your day by letting you know how much your code sucks.
 
 So like... enjoy.
 
-## Deps 📦
+## 📦 Deps
 
 It uses a bundle of different linters and a code formatter:
 
@@ -25,7 +25,7 @@ It uses a bundle of different linters and a code formatter:
 | [pyright](https://github.com/microsoft/pyright) 
 | [ruff](https://github.com/astral-sh/ruff)
 
-## Installation 💾
+## 💾 Installation
 
 Download
 
@@ -50,7 +50,7 @@ Okrutnik will create a virtual Python environment in .okrutnik_venv for itself a
 
 You can `--update` or `--uninstall` them at any time.
 
-## Usage 🚀
+## 🚀 Usage
 
 ```
 ./okrutnik.sh target.py
@@ -77,7 +77,7 @@ Standalone:
  --safety         Run safety check
 ```
 
-## Screenshot 📸
+## 📸 Screenshot
 
 <div align="center">
 
@@ -85,11 +85,11 @@ Standalone:
 
 </div>
 
-## Funding 💸
+## 💸 Funding
 
 If you found this script helpful, please consider [making donation](https://en.wosp.org.pl/fundacja/jak-wspierac-wosp/wesprzyj-online) to a charity on my behalf. Thank you.
 
-## License 📜
+## 📜 License
 
 > Okrutnik: a bash script that helps you write correct Python code\
 > Copyright (C) 2024 c0m4r
