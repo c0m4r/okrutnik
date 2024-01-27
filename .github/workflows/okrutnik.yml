@@ -26,7 +26,7 @@ jobs:
         run: ./okrutnik.sh --install
       - name: Test correct code
         run: |
-          wget https://pastebin.com/raw/7gZE81aM -O test.py
+          wget https://pastebin.com/raw/pRkMguPA -O test.py
           ./okrutnik.sh --stop test.py
       - name: Test code which sucks
         run: ./okrutnik.sh pip-23.3.2/setup.py || true
