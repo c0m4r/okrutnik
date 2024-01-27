@@ -128,7 +128,7 @@ okrutnik_which_python() {
     fi
 }
 
-# Custom modules hacks
+# Custom crossplane module hack
 custom_crossplane_hack() {
     crossplane_path=$(dirname ${VENV}/lib/python*/site-packages)
     if [[ -d $crossplane_path ]]; then
