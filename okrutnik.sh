@@ -21,7 +21,7 @@
 # --------------------------------------------
 
 # Version
-VERSION=2.1.4
+VERSION=2.1.5
 
 # Toolset
 TOOLSET="bandit black codespell mypy pylint pyright pylama ruff safety"
@@ -86,6 +86,7 @@ okrutnik_install() {
         print "$ARG3"
         ${PIP} install -r $ARG3
     fi
+    custom_crossplane_hack
     echo -e "${CYAN}Receiving communication...${ENDCOLOR}"
     echo -e "-> ${GREEN}All your base are belong to us${ENDCOLOR} 👽"
 }
@@ -124,6 +125,16 @@ okrutnik_which_python() {
     else
         echo "Python not found"
         exit 1
+    fi
+}
+
+# Custom modules hacks
+function custom_crossplane_hack() {
+    crossplane_path=$(dirname ${VENV}/lib/python*/site-packages)
+    if [[ -d $crossplane_path ]]; then
+        echo "Crossplane detected: committing a hack"
+        touch ${crossplane_path}/site-packages/crossplane/py.typed
+        sed -i 's/parse(filename,/parse(filename: str,/g;' ${crossplane_path}/site-packages/crossplane/parser.py
     fi
 }
 
@@ -214,8 +225,7 @@ mypy --install-types --non-interactive --strict $TARGET ; pass
 
 # pylint
 print "pylint (${ITERATION}/${TOOLS_NUM})"
-echo "W0718: (broad-exception-caught) is disabled"
-pylint --disable W0718 $TARGET ; pass
+pylint $TARGET ; pass
 
 # pyright
 print "pyright (${ITERATION}/${TOOLS_NUM})"
@@ -223,7 +233,7 @@ pyright $TARGET ; pass
 
 # bandit
 print "bandit (${ITERATION}/${TOOLS_NUM})"
-bandit --quiet $TARGET ; pass
+bandit --quiet -r $TARGET ; pass
 
 # --------------------------------------------
 # Formatter
