@@ -21,7 +21,7 @@
 # --------------------------------------------
 
 # Version
-VERSION=2.1.6
+VERSION=2.1.7
 
 # Toolset
 TOOLSET="bandit black codespell mypy pylint pyright pylama ruff safety"
@@ -78,7 +78,7 @@ okrutnik_install() {
     echo -e "${CYAN}Connecting to an intergalactic relay${ENDCOLOR} 📡"
     $PYTHON_BIN -m venv ${VENV}
     PATH="${VENV}/bin:${PATH}"
-    source ${VENV}/bin/activate    
+    source ${VENV}/bin/activate
     okrutnik_which_pip
     ${PIP} install --upgrade pip setuptools wheel
     ${PIP} install --upgrade ${TOOLSET}
@@ -149,7 +149,7 @@ if [[ "$ARG1" == "-h" ]] || [[ "$ARG1" == "--help" ]]; then
     echo "Usage: ./okrutnik.sh [options] <target>"
     echo ""
     echo "Before <target>:"
-    echo " -s, --stop                        Exit on failed linters or errors"    
+    echo " -s, --stop                        Exit on failed linters or errors"
     echo ""
     echo "Standalone:"
     echo " -h, --help                        Print this help message"
@@ -209,7 +209,7 @@ echo "Target(s): ${TARGET}"
 
 # Ruff
 print "ruff (${ITERATION}/${TOOLS_NUM})"
-ruff $TARGET ; pass
+ruff check $TARGET ; pass
 
 # codespell
 print "codespell (${ITERATION}/${TOOLS_NUM})"
