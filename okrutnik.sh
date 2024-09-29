@@ -21,7 +21,7 @@
 # --------------------------------------------
 
 # Version
-VERSION=2.1.7
+VERSION=2.1.8
 
 # Toolset
 TOOLSET="bandit black codespell mypy pylint pyright pylama ruff safety"
@@ -130,7 +130,7 @@ okrutnik_which_python() {
 
 # Custom crossplane module hack
 custom_crossplane_hack() {
-    crossplane_path=$(dirname ${VENV}/lib/python*/site-packages)
+    crossplane_path=$(dirname ${VENV}/lib/python*/site-packages/crossplane)
     if [[ -d $crossplane_path ]]; then
         echo "Crossplane detected: committing a hack"
         touch ${crossplane_path}/site-packages/crossplane/py.typed
