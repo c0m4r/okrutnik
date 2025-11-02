@@ -38,6 +38,7 @@ Download
 ```
 wget https://raw.githubusercontent.com/c0m4r/okrutnik/main/okrutnik.sh
 chmod +x okrutnik.sh
+echo "c4ec707268d1c5a25275d47c4dfcb4de33628e1b3820c442991b4cdb45a7d040 okrutnik.sh" | sha256sum -c
 ```
 
 Just put it where your project is and install the required modules:
@@ -86,7 +87,7 @@ Standalone:
 ## 📜 License
 
 > Okrutnik: a bash script that helps you write correct Python code\
-> Copyright (C) 2024 c0m4r
+> Copyright (C) 2024-2025 c0m4r
 >
 > This program is free software: you can redistribute it and/or modify\
 > it under the terms of the GNU General Public License as published by\
