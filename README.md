@@ -26,7 +26,6 @@ It uses a bundle of different linters and a code formatter:
 | [black](https://github.com/psf/black) 
 | [codespell](https://github.com/codespell-project/codespell) 
 | [mypy](https://mypy.readthedocs.io/) 
-| [pylama](https://github.com/klen/pylama) 
 | [pylint](https://github.com/pylint-dev/pylint) 
 | [pyright](https://github.com/microsoft/pyright) 
 | [ruff](https://github.com/astral-sh/ruff)
@@ -37,8 +36,8 @@ Download
 
 ```
 wget https://raw.githubusercontent.com/c0m4r/okrutnik/main/okrutnik.sh
+echo "b85356edf60a390c5af2d31f5b9379fc19832c8b5da997aeb94772044d02c7dc okrutnik.sh" | sha256sum -c || rm -f okrutnik.sh
 chmod +x okrutnik.sh
-echo "c4ec707268d1c5a25275d47c4dfcb4de33628e1b3820c442991b4cdb45a7d040 okrutnik.sh" | sha256sum -c
 ```
 
 Just put it where your project is and install the required modules:
@@ -81,13 +80,12 @@ Standalone:
  -h, --help       Print this help message
  --update         Update installed tools
  --uninstall      Remove installed tools
- --safety         Run safety check
 ```
 
 ## 📜 License
 
 > Okrutnik: a bash script that helps you write correct Python code\
-> Copyright (C) 2024-2025 c0m4r
+> Copyright (C) 2024-2026 c0m4r
 >
 > This program is free software: you can redistribute it and/or modify\
 > it under the terms of the GNU General Public License as published by\

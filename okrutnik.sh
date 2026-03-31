@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Okrutnik: a bash script that helps you write correct Python code
-# Copyright (C) 2024 c0m4r
+# Copyright (C) 2024-2026 c0m4r
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
