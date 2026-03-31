@@ -23,10 +23,10 @@
 # --------------------------------------------
 
 # Version
-VERSION=2.1.8
+VERSION=3.0.0
 
 # Toolset
-TOOLSET="bandit black codespell mypy pylint pyright pylama ruff safety"
+TOOLSET="bandit==1.9.4 black==26.3.1 codespell==2.4.2 mypy==1.19.1 pylint==4.0.5 pyright==1.1.408 ruff==0.15.8"
 
 # Base dir
 BASEDIR=$(dirname "$0")
@@ -47,7 +47,7 @@ RED='\e[1;31m'
 ENDCOLOR="\e[0m"
 
 # Defaults
-TOOLS_NUM=8
+TOOLS_NUM=$(echo ${TOOLSET} | wc | awk '{print $2}')
 ITERATION=1
 PASSED=0
 FAILED=0
@@ -158,7 +158,6 @@ if [[ "$ARG1" == "-h" ]] || [[ "$ARG1" == "--help" ]]; then
     echo " --update                          Update installed tools"
     echo " --install [-r requirements.txt]   Install tools [and target requirements]"
     echo " --uninstall                       Remove installed tools"
-    echo " --safety                          Run safety check"
     exit 0
 elif [[ "$ARG1" == "--update" ]]; then
     okrutnik_install
@@ -181,15 +180,6 @@ if [[ -e ${VENV}/pyvenv.cfg ]]; then
     PATH="${VENV}/bin:${PATH}"
 else
     okrutnik_install
-fi
-
-# --------------------------------------------
-# Safety check
-# --------------------------------------------
-
-if [[ "$ARG1" == "--safety" ]]; then
-    safety check
-    exit $?
 fi
 
 # --------------------------------------------
@@ -216,10 +206,6 @@ ruff check $TARGET ; pass
 # codespell
 print "codespell (${ITERATION}/${TOOLS_NUM})"
 codespell -L paranoya --skip "./*venv*" --skip "./lib/python*" $TARGET ; pass
-
-# pylama
-print "pylama (${ITERATION}/${TOOLS_NUM})"
-pylama $TARGET ; pass
 
 # mypy
 print "mypy (${ITERATION}/${TOOLS_NUM})"
