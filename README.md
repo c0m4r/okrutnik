@@ -36,7 +36,7 @@ Download
 
 ```
 wget https://raw.githubusercontent.com/c0m4r/okrutnik/main/okrutnik.sh
-echo "b85356edf60a390c5af2d31f5b9379fc19832c8b5da997aeb94772044d02c7dc okrutnik.sh" | sha256sum -c || rm -f okrutnik.sh
+echo "5f429b9afc27fd37f1082c6979379c8ddd316e5caa2267fa6714f969a5ebcd39 okrutnik.sh" | sha256sum -c || rm -f okrutnik.sh
 chmod +x okrutnik.sh
 ```
 
