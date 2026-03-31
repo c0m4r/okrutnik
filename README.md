@@ -102,4 +102,4 @@ Standalone:
 
 ## 💸 Funding
 
-If you found this script helpful, please consider [making a donation](https://en.wosp.org.pl/fundacja/jak-wspierac-wosp/wesprzyj-online) to a charity on my behalf. Thank you.
+If you found this script helpful, please consider [making a donation](junglekeepers.org/donate) on my behalf. Thank you.
